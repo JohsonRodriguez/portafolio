@@ -1,3 +1,14 @@
+const db = firebase.firestore();
+db.collection('contactos');
+
+db.collection('contactos').get()
+    .then(snapshot => {
+        // to do when data is recieved
+        console.log(snapshot);
+    })
+    .catch(err => console.log(err));
+
+
 var firebase = require('firebase/app');
 require('firebase/auth');
 require('firebase/database');
@@ -32,7 +43,7 @@ function alertFunction() {
   }
 
   function writeUserData(name, email, subj, msgbody) {
-    firebase.database().ref().child("Users/"+name).set({
+    firebase.database().ref().child("contactos/"+name).set({
       username: name,
       email: email,
       subject : subj,
